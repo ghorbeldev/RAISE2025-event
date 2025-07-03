@@ -1,1133 +1,713 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>International Summer School RAISE 2025 - Robotics and AI in Systems Engineering</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>RAISE 2025 - International Summer School on Robotics & AI</title>
     <style>
-        :root {
-            --primary-color: #0a2540;
-            --secondary-color: #635bff;
-            --accent-color: #00d4ff;
-            --text-color: #424770;
-            --light-bg: #f6f9fc;
-            --light-accent: #e3e8ee;
-            --success-color: #32D583;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .navbar {
+        /* Header */
+        header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 1px 0 0 rgba(0, 0, 0, .05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar-brand {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            color: var(--primary-color) !important;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        .nav-link {
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
             font-weight: 500;
-            color: var(--text-color) !important;
-            padding: 0.5rem 1rem !important;
-            margin: 0 0.2rem;
+            transition: color 0.3s ease;
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
+        .nav-links a:hover {
+            color: #764ba2;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        footer {
-            background: var(--primary-color);
-            padding: 3rem 0;
-        }
-
-        .text-purple {
-            color: #635bff;
-        }
-
-        .badge-custom {
-            background: var(--light-bg);
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .price-card {
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .price-header {
-            padding: 1.5rem;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><path fill="%23764ba2" opacity="0.3" d="M0,300L50,316.7C100,333,200,367,300,350C400,333,500,267,600,250C700,233,800,267,900,283.3C1000,300,1100,300,1150,300L1200,300L1200,600L1150,600C1100,600,1000,600,900,600C800,600,700,600,600,600C500,600,400,600,300,600C200,600,100,600,50,600L0,600Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
             text-align: center;
+            padding: 6rem 0;
         }
 
-        .price-body {
-            padding: 1.5rem;
-        }
-
-        .price-amount {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .track-card {
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            background: var(--light-bg);
-            border-radius: 0 8px 8px 0;
-            transition: all 0.3s ease;
-        }
-
-        .track-card:hover {
-            transform: translateX(5px);
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .day-schedule {
-            margin-bottom: 3rem;
-        }
-
-        .schedule-item {
-            padding: 1rem;
-            border-left: 3px solid var(--secondary-color);
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: var(--light-bg);
-            border-radius: 0 8px 8px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .schedule-time {
-            font-weight: 500;
-            color: var(--secondary-color);
-        }
-
-        .stats-item {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-        }
-
-        .icon-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-circle i {
+        .hero h2 {
             font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.9;
         }
 
-        .bg-purple {
-            background-color: rgba(99, 91, 255, 0.1);
+        .hero-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .partner-logo {
-            padding: 1.5rem 1rem;
-            border-radius: 8px;
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        /* Main Content */
+        .main-content {
             background: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            font-weight: 600;
-            color: var(--primary-color);
+            margin: 2rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .avatar-placeholder {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #764ba2;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* Theme Section */
+        .theme-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .theme-highlight {
+            background: rgba(118, 75, 162, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #764ba2;
+            margin: 1rem 0;
+        }
+
+        /* Daily Program */
+        .day-program {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .day-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .day-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-
-        .committee-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .sponsor-logo {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sponsor-logo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-list {
-            display: flex;
-            flex-direction: column;
             gap: 1rem;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Chatbot Button Styles */
-        .chatbot-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .chatbot-icon {
-            background-color: white;
-            color: var(--secondary-color);
-            width: 36px;
-            height: 36px;
+        .day-number {
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
-            font-size: 20px;
+            font-weight: bold;
         }
 
-        .chatbot-text {
-            font-weight: 500;
-            font-size: 16px;
-        }
-
-        /* Tooltip Styles */
-        .chatbot-tooltip {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background-color: white;
+        .time-slot {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            margin: 1rem 0;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            width: 250px;
-            padding: 15px;
-            z-index: 999;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            pointer-events: none;
+            border-left: 4px solid #ffd700;
         }
 
-        .tooltip-inner {
-            color: var(--text-color);
+        .time-slot h5 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
         }
 
-        .tooltip-inner strong {
+        /* Target Audience */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .audience-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-top: 4px solid #667eea;
+        }
+
+        .audience-card h4 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+        }
+
+        /* Fees Table */
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .fees-table th,
+        .fees-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fees-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .fees-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Learning Outcomes */
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .outcome-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .outcome-item::before {
+            content: "✓";
+            font-size: 2rem;
             display: block;
-            margin-bottom: 5px;
-            color: var(--primary-color);
+            margin-bottom: 1rem;
+            color: #ffd700;
         }
 
-        .tooltip-inner p {
-            margin-bottom: 0;
-            font-size: 14px;
+        /* Faculty */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        .tooltip-arrow {
-            position: absolute;
-            bottom: -10px;
-            right: 30px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid white;
+        .faculty-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e9ecef;
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 576px) {
-            .chatbot-text {
-                display: none;
+        .faculty-card h4 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .faculty-card .title {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .chatbot-button {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                justify-content: center;
-                padding: 0;
+            .hero h2 {
+                font-size: 1.2rem;
             }
 
-            .chatbot-icon {
-                margin-right: 0;
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
             }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .hero-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            z-index: 1000;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
-
 <body>
-    <?php
-    // Define the root path for proper navbar links
-    $root_path = "../../";
-    include('../../navbar.php');
-    ?>
-
-    <!-- Event Navigation -->
-    <div class="bg-light py-2 mb-0 border-bottom">
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <header>
         <div class="container">
-            <div class="d-flex justify-content-center justify-content-md-center">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#overview">Overview</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#audience">Audience</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#program">Program</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#competition">Competition</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#organization">Committee</a>
-                    </li>                   
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sponsors">Sponsors</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
+            <div class="header-content">
+                <div class="logo">RAISE 2025</div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#program">Program</a></li>
+                        <li><a href="#audience">Audience</a></li>
+                        <li><a href="#faculty">Faculty</a></li>
+                        <li><a href="#registration">Registration</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </div>
+    </header>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8 text-white hero-content mx-auto text-center">
-                <h1 class="mb-3">RAISE 2025</h1>
-                <p class="lead mb-2">International Summer School on</p>
-                <p class="lead mb-4">Robotics and Artificial Intelligence in Systems Engineering</p>
-
-                <div class="d-flex justify-content-center flex-wrap gap-4 mb-4">
-                    <div class="stats-item text-white bg-opacity-10">
-                        <div><i class="fas fa-calendar-alt me-2"></i> 14-16 July 2025</div>
-                    </div>
-                    <div class="stats-item text-white bg-opacity-10">
-                        <div><i class="fas fa-map-marker-alt me-2"></i>ENET'Com and Digital Research Center of Sfax, Tunisia</div>
-                    </div>
+    <section class="hero">
+        <div class="container">
+            <h1>RAISE 2025</h1>
+            <h2>International Summer School on Robotics & Artificial Intelligence in Systems Engineering</h2>
+            
+            <div class="hero-details">
+                <div class="hero-card">
+                    <h3>📅 Dates</h3>
+                    <p>14–16 July 2025</p>
                 </div>
-
-                <!-- Register Button -->
-                <a href="https://forms.gle/yDLEFRtugrhM3dzE9" target="_blank" class="btn btn-lg px-4 py-2 mt-3" 
-                   style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border: none;">
-                    <i class="fas fa-ticket me-2"></i> Register Now
-                </a>
-
-                <!-- Download Call Button -->
-                <a href="https://raiseschool.github.io/RAISE2025/CALL_RAISE2025.pdf" target="_blank" class="btn btn-lg px-4 py-2 mt-3 ms-2"
-                   style="background-color: rgba(255, 255, 255, 0.2); color: white; border: 1px solid white;">
-                    <i class="fas fa-file-pdf me-2"></i> Download Call PDF
-                </a>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-    <!-- Overview Section -->
-    <section class="py-5" id="overview">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="section-title mb-4">Summer School Overview</h2>
-                    <p class="lead mb-4">The International Summer School RAISE 2025 is an intensive three-day summer school focused on cutting-edge robotics and artificial intelligence technologies in systems engineering. The program combines theoretical knowledge with hands-on workshops and a competitive challenge.</p>
-
-                    <div class="row g-4 mt-3">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-primary bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-robot text-primary"></i>
-                                    </div>
-                                    <h4>ROS</h4>
-                                    <p class="card-text">Practical workshops on Robot Operating System and hands-on implementation.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-purple bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-brain text-purple"></i>
-                                    </div>
-                                    <h4>AI Technologies</h4>
-                                    <p class="card-text">Deep dive into Generative AI, Computer Vision, and Large Language Models.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-success bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-trophy text-success"></i>
-                                    </div>
-                                    <h4>Competition</h4>
-                                    <p class="card-text">Put your skills to the test in the RAISE robotics competition with attractive prizes.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-card">
+                    <h3>📍 Venue</h3>
+                    <p>CRNS-Sfax, Tunisia</p>
+                </div>
+                <div class="hero-card">
+                    <h3>🌐 Website</h3>
+                    <p>raiseschool.github.io</p>
+                </div>
+                <div class="hero-card">
+                    <h3>🎯 Theme</h3>
+                    <p>AI-Empowered Robotics for Smart Agriculture</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Audience Section -->
-    <section class="py-5 bg-light" id="audience">
+    <div class="main-content">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="section-title mb-4">Who Should Attend</h2>
-
-                    <div class="row g-4">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-info bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-user-graduate text-info"></i>
-                                    </div>
-                                    <h4>Students</h4>
-                                    <p>Undergraduate and graduate students interested in robotics and AI technologies.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-success bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-microscope text-success"></i>
-                                    </div>
-                                    <h4>PhD Candidates</h4>
-                                    <p>Doctoral researchers working on robotics, AI, and systems engineering.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-primary bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-chalkboard-teacher text-primary"></i>
-                                    </div>
-                                    <h4>Academics</h4>
-                                    <p>Professors and researchers interested in the latest advances in the field.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="icon-circle bg-warning bg-opacity-10 mx-auto mb-3">
-                                        <i class="fas fa-industry text-warning"></i>
-                                    </div>
-                                    <h4>Industry</h4>
-                                    <p>Professionals seeking to understand and implement robotics and AI solutions.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <section id="about" class="section theme-section">
+                <h2>About RAISE 2025</h2>
+                <div class="theme-highlight">
+                    <p>RAISE 2025 condenses the essentials of modern robotics and AI into an intensive three-day boot camp that blends theory, hands-on practice, and a team challenge. This year's unifying theme is <strong>"AI-Empowered Robotics for Smart Agriculture."</strong></p>
+                    <p>Participants learn to design mobile robots that diagnose plant-health conditions with computer vision and Large-Language-Model (LLM) reasoning, then recommend – or autonomously execute – remedial actions.</p>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    
-
-    <!-- Program Section -->
-    <section class="py-5 bg-light" id="program">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="section-title mb-4">Program Schedule</h2>
-
-                    <div class="day-schedule">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="badge-custom me-3">Day 1</div>
-                            <h3 class="mb-0">ROS (Robot Operating System)</h3>
+            <section id="program" class="section">
+                <h2>Daily Program</h2>
+                <div class="day-program">
+                    <div class="day-card">
+                        <h4><span class="day-number">1</span>ROS 2 Foundations for Field Robots</h4>
+                        
+                        <div class="time-slot">
+                            <h5>09:00 – 12:00 | Morning Session</h5>
+                            <ul>
+                                <li>ROS 2 computation graph</li>
+                                <li>Topics, services & actions</li>
+                                <li>Publishing velocity commands (geometry_msgs/Twist)</li>
+                                <li>Frame transforms & odometry</li>
+                                <li>Reactive obstacle avoidance</li>
+                                <li>Demo: navigating between crop rows</li>
+                            </ul>
                         </div>
 
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:00 – 09:30</div>
-                            <h5>Opening Session</h5>
-                            <p class="mb-0">Welcome remarks and introduction to the summer school</p>
+                        <div class="time-slot">
+                            <h5>13:00 – 16:00 | Hands-On Lab</h5>
+                            <p>Fork pre-written GitHub repo → fill in missing nodes & launch files to:</p>
+                            <ol>
+                                <li>Drive a simulated robot in Gazebo</li>
+                                <li>Deploy code on Turtlebot-like platform in a mini-greenhouse</li>
+                            </ol>
                         </div>
 
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:30 – 12:30</div>
-                            <h5>Introduction to ROS</h5>
-                            <p class="mb-0">Fundamentals of Robot Operating System and its architecture</p>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">14:00 – 17:00</div>
-                            <h5>Hands-on Workshops</h5>
-                            <p class="mb-0">Practical implementation of ROS concepts with real robots</p>
+                        <div class="time-slot">
+                            <h5>16:15 – 17:00 | Assessment</h5>
+                            <p>ExamGPT mini-quiz #1 (auto-graded). ≥70% = Level-1 Certificate</p>
                         </div>
                     </div>
 
-                    <div class="day-schedule">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="badge-custom me-3">Day 2</div>
-                            <h3 class="mb-0">Artificial Intelligence</h3>
+                    <div class="day-card">
+                        <h4><span class="day-number">2</span>AI & Computer Vision for Plant Diagnostics</h4>
+                        
+                        <div class="time-slot">
+                            <h5>09:00 – 12:00 | Morning Session</h5>
+                            <ul>
+                                <li>AI evolution: from AlexNet → Generative AI → Agentic AI</li>
+                                <li>Intro to vision-language models (OpenAI GPT-4o / Google Gemini)</li>
+                                <li>YOLOv10 pipeline for real-time plant detection</li>
+                                <li>Prompt-engineering LLMs for symptom classification</li>
+                            </ul>
                         </div>
 
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:00 – 09:30</div>
-                            <h5>Day 2 Opening</h5>
-                            <p class="mb-0">Overview of the AI topics for the day</p>
+                        <div class="time-slot">
+                            <h5>13:00 – 16:00 | Hands-On Lab</h5>
+                            <ol>
+                                <li>Train / fine-tune YOLO on supplied tomato-leaf dataset</li>
+                                <li>Call Gemini-Vision API to label leaf ailments</li>
+                                <li>Fuse detections & LLM output into a ROS 2 diagnostic topic</li>
+                            </ol>
                         </div>
 
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:30 – 12:00</div>
-                            <h5>Generative AI</h5>
-                            <p class="mb-0">Introduction to generative models and their applications in robotics</p>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">13:00 – 15:00</div>
-                            <h5>Computer Vision</h5>
-                            <p class="mb-0">Image processing and visual perception for robotics systems</p>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">15:15 – 17:00</div>
-                            <h5>Large Language Models (LLMs)</h5>
-                            <p class="mb-0">Applications of LLMs in robotics control and interaction</p>
+                        <div class="time-slot">
+                            <h5>16:15 – 17:00 | Assessment</h5>
+                            <p>ExamGPT mini-quiz #2. ≥70% = Level-2 Certificate</p>
                         </div>
                     </div>
 
-                    <div class="day-schedule">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="badge-custom me-3">Day 3</div>
-                            <h3 class="mb-0">Competition & Industry Day</h3>
+                    <div class="day-card">
+                        <h4><span class="day-number">3</span>Integrated Challenge & Awards</h4>
+                        
+                        <div class="time-slot">
+                            <h5>09:00 – 15:00 | Team Challenge</h5>
+                            <p>Teams (4–5 members) build and test a robot that:</p>
+                            <ul>
+                                <li>Navigates 10 m crop row with obstacles</li>
+                                <li>Detects plant health issues in real time</li>
+                                <li>Publishes recommended treatment via ROS 2</li>
+                            </ul>
+                            <p><strong>Scoring:</strong> navigation (30%), detection accuracy (40%), actionable recommendations (20%), robustness & teamwork (10%)</p>
                         </div>
-                    
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:00 – 09:30</div>
-                            <h5>Final Day Opening</h5>
-                            <p class="mb-0">Introduction to the competition and day's activities</p>
-                        </div>
-                    
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:30 – 12:30</div>
-                            <h5>International Summer School RAISE Competition</h5>
-                            <p class="mb-0">Teams compete in different robotics tracks</p>
-                        </div>
-                    
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:30 – 12:30</div>
-                            <h5>Parallel Sessions</h5>
-                            <p class="mb-0">
-                                <strong>Track A:</strong> Industrial & Poster Sessions – Presentations from industry partners and poster exhibitions<br>
-                                <strong>Track B:</strong> PCB Workshop :
-                                <ul>
-                                    <li>Session 1: <em>Basics of Electronics for PCB Prototyping</em> </li>
-                                    <li>Session 2: <em>Principles of PCB Design</em></li>
-                                    <li>Session 3: <em>PCB Design in Practice</em> </li>
-                                    <li>Session 4: <em>Visit to the CRNS PCB Prototyping Lab</em> </li>
-                                </ul>
-                            </p>
-                        </div>
-                    
-                        <div class="schedule-item">
-                            <div class="schedule-time">15:45 – 17:30</div>
-                            <h5>Awards Ceremony & Closing</h5>
-                            <p class="mb-0">Announcement of competition winners and closing remarks</p>
+
+                        <div class="time-slot">
+                            <h5>15:00 – 17:00 | Awards Ceremony</h5>
+                            <ul>
+                                <li>Live demos → judging → prize ceremony</li>
+                                <li>Gold / Silver / Bronze trophies + sponsor gifts</li>
+                                <li>Certificates of Completion / Participation issued</li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-
- <!-- Register Section -->
-<section class="py-5" id="register">
-    <div class="container text-center">
-        <h2 class="mb-4">Register for the RAISE 2025 School Now </h2>
-        <p class="lead mb-4">Secure your spot for the International Summer School RAISE 2025 event by completing the registration form below before June 15 2025.</p>
-        <a href="https://forms.gle/yDLEFRtugrhM3dzE9" target="_blank" class="btn btn-lg px-4 py-2" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
-            <i class="fas fa-edit me-2"></i> Fill Registration Form
-        </a>
-    </div>
-</section>
-   
-
-<!-- Competition Section -->
-<section class="py-5" id="competition">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <h2 class="section-title mb-4">International Summer School RAISE Competition</h2>
-                <p class="lead mb-5">The International Summer School RAISE 2025 competition aims to foster innovation and practical skills in robotics and AI. Teams will compete in three different tracks with attractive prizes for winners.</p>
-
-                <div class="track-card">
-                    <h4><i class="fas fa-robot text-primary me-2"></i> Track 1: Autonomous Robot</h4>
-                    <p>Design a robot that can follow a 10-meter black path (5 cm wide) autonomously with maximum speed and precision.</p>
-                </div>
-
-                <div class="track-card">
-                    <h4><i class="fas fa-box text-warning me-2"></i> Track 2: Industrial Robot</h4>
-                    <p>Build a robot capable of carrying a 5cm³ box and following a black path for 10 meters without dropping the payload.</p>
-                </div>
-
-                <div class="track-card">
-                    <h4><i class="fas fa-leaf text-success me-2"></i> Track 3: Agriculture Robot</h4>
-                    <p>Develop a robot that can read QR codes with a camera and perform specified actions (FORWARD, BACKWARD, etc.) along a 10-meter path.</p>
-                </div>
-
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h4 class="card-title"><i class="fas fa-award text-warning me-2"></i> Rewards</h4>
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Prizes for each track winner</li>
-                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Potential industrial partnerships for real-world implementation</li>
-                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Recognition certificates for all finalists</li>
-                        </ul>
-
-                        <div class="alert alert-warning">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-exclamation-circle me-3 fa-2x"></i>
-                                <div>
-                                    <h5 class="mb-1">Important Notice</h5>
-                                    <p class="mb-0">Register before May 31, 2025 to participate in the competition. Limited spots available.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdslmvspXMEhlkLMES4XYzgXUyaMKBPLtYifmdTd9u1-k3FoA/viewform" target="_blank" class="btn mt-3" style="background-color: var(--primary-color); color: white;">
-                            <i class="fas fa-trophy me-2"></i> Competition Registration Form
-                        </a>
+            <section id="audience" class="section">
+                <h2>Target Audience & Prerequisites</h2>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <h4>🎓 Student Track</h4>
+                        <p><strong>Intended for:</strong> BSc / MSc students in EE, CS, Mechatronics</p>
+                        <p><strong>Entry Skills:</strong> Basic Python + linear algebra</p>
+                    </div>
+                    <div class="audience-card">
+                        <h4>🔬 Academic / PhD Track</h4>
+                        <p><strong>Intended for:</strong> Researchers & lecturers</p>
+                        <p><strong>Entry Skills:</strong> Intro ROS/AI helpful</p>
+                    </div>
+                    <div class="audience-card">
+                        <h4>🏭 Industrial Track</h4>
+                        <p><strong>Intended for:</strong> Engineers & developers</p>
+                        <p><strong>Entry Skills:</strong> C++/Python & Linux basics</p>
                     </div>
                 </div>
-            </div>
+                <div class="theme-highlight">
+                    <p><strong>Technical Requirements:</strong> A laptop with Ubuntu 22.04 LTS, Docker installed, and 20 GB free disk space is required. All extra hardware is provided on-site.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Learning Outcomes</h2>
+                <p>By the end of RAISE 2025, participants will be able to:</p>
+                <div class="outcomes-grid">
+                    <div class="outcome-item">Deploy ROS 2 stacks for mobile manipulation and navigation</div>
+                    <div class="outcome-item">Implement YOLO-based vision pipelines tailored to agricultural crops</div>
+                    <div class="outcome-item">Integrate LLMs for multimodal (image + text) reasoning in ROS ecosystems</div>
+                    <div class="outcome-item">Prototype end-to-end agri-robot solutions within tight time-frames</div>
+                    <div class="outcome-item">Collaborate cross-disciplinarily under competition pressure</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Assessment & Certification</h2>
+                <div class="theme-highlight">
+                    <h3>ExamGPT Quizzes</h3>
+                    <p>Two short, auto-graded MCQ/short-answer tests at the end of Days 1 & 2.</p>
+                    
+                    <h3>Certificates</h3>
+                    <ul>
+                        <li><strong>Certificate of Completion:</strong> ≥70% on both quizzes plus active challenge participation</li>
+                        <li><strong>Certificate of Participation:</strong> All other attendees</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="faculty" class="section">
+                <h2>Faculty & Organization</h2>
+                <div class="faculty-grid">
+                    <div class="faculty-card">
+                        <h4>Prof. Omar Cheikhrouhou</h4>
+                        <div class="title">General Chair</div>
+                        <p>ENET'Com, Tunisia</p>
+                    </div>
+                    <div class="faculty-card">
+                        <h4>Prof. Anis Koubaa</h4>
+                        <div class="title">Technical Program Lead</div>
+                        <p>Alfaisal University / ScaleX Innovation</p>
+                    </div>
+                </div>
+                <p><strong>Scientific Committee:</strong> H. Bentaher, H. Chouikhi, N. Ayadi, M. Bahloul, Y. Bouteraa, A. Echtioui, M. Kharrat</p>
+            </section>
+
+            <section id="registration" class="section">
+                <h2>Registration & Fees</h2>
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Fee (TND)</th>
+                            <th>Includes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Student</td>
+                            <td>400</td>
+                            <td>All sessions, coffee breaks, challenge kit, certificate</td>
+                        </tr>
+                        <tr>
+                            <td>Academic / PhD</td>
+                            <td>500</td>
+                            <td>+ Digital proceedings</td>
+                        </tr>
+                        <tr>
+                            <td>Industrial</td>
+                            <td>700</td>
+                            <td>+ Networking dinner & sponsor booth access</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="theme-highlight">
+                    <p><strong>Scholarships:</strong> A limited number of need-based waivers are available; apply via <strong>raiseschool2025@gmail.com</strong> by <strong>15 June 2025</strong>.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Logistics & Resources</h2>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <h4>📦 Pre-school Pack</h4>
+                        <p>GitHub repos, Docker images, reading list, and VM snapshot sent to confirmed attendees on 1 July 2025</p>
+                    </div>
+                    <div class="audience-card">
+                        <h4>🤖 On-site Hardware</h4>
+                        <p>Jetson Nano robot kits with depth cameras, Li-Po batteries, QR-coded plant stands</p>
+                    </div>
+                    <div class="audience-card">
+                        <h4>🛠️ Support</h4>
+                        <p>Slack workspace + nightly office hours for troubleshooting</p>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
-</section>
 
-    <!-- Organization Section -->
-    <section class="py-5" id="organization">
+    <section class="cta-section">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="section-title mb-4">Organization Committee</h2>
-    
-                    <div class="row g-4">
-                        <!-- General Chair -->
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <div class="card-body">
-                                    <h4 class="card-title mb-4" style="color: var(--primary-color);">General Chair</h4>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <div class="avatar-placeholder" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; width: 60px; height: 60px; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">OC</div>
-                                        </div>
-                                        <div>
-                                            <h5 class="mb-1">Omar Cheikhrouhou</h5>
-                                            <p class="mb-0 text-muted">ENET'Com, Sfax, Tunisia</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- Technical Program Lead -->
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <div class="card-body">
-                                    <h4 class="card-title mb-4" style="color: var(--primary-color);">Technical Program Lead</h4>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <div class="avatar-placeholder" style="background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); color: white; width: 60px; height: 60px; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">AK</div>
-                                        </div>
-                                        <div>
-                                            <h5 class="mb-1">Anis Koubaa</h5>
-                                            <p class="mb-0 text-muted">Alfaisal University/ScaleX Innovation</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- Scientific Committee -->
-                    <div class="card mt-4 border-0 shadow-sm">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4" style="color: var(--primary-color);">Scientific Committee</h4>
-                            <div class="row g-4">
-                                <!-- Membres -->
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">HB</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Hatem Bentaher</h5>
-                                            <p class="mb-0 text-muted">ISGIS, University of Sfax</p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">HC</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Houssam Chouikhi</h5>
-                                            <p class="mb-0 text-muted">ISSIG, University of Gabès</p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">NA</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Nidhal Ayadi</h5>
-                                            <p class="mb-0 text-muted">University of Sfax</p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">MB</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Mohamed Bahloul</h5>
-                                            <p class="mb-0 text-muted">Alfaisal University</p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">YB</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Yassine Bouteraa</h5>
-                                            <p class="mb-0 text-muted">Prince Sattam Bin Abdulaziz University</p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">AE</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Amira Echtioui</h5>
-                                            <p class="mb-0 text-muted">ENSTAB, University of Carthage</p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">MK</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Mohamed Kharrat</h5>
-                                            <p class="mb-0 text-muted">University of Sfax</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="committee-member d-flex align-items-center p-3 bg-light rounded-3 mb-3" style="border-left: 4px solid var(--secondary-color);">
-                                        <div class="avatar-placeholder me-3" style="background-color: var(--secondary-color); color: white; width: 50px; height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;">MB</div>
-                                        <div>
-                                            <h5 class="mb-0 fs-5">Manel Boujelben</h5>
-                                            <p class="mb-0 text-muted">University of Sfax</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            </div> <!-- End row -->
-                        </div> <!-- End card-body -->
-                    </div> <!-- End card -->
-                </div>
-            </div>
-        </div>
-    </section>
-    
-     
-
-    <!-- Partners Section -->
-    <section class="py-5 bg-light" id="partners">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="section-title mb-4">Our Partners</h2>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row g-4 align-items-center justify-content-center">
-                                <div class="col-6 col-md-4 col-lg-2 text-center">
-                                    <div class="partner-logo">CES Lab</div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 text-center">
-                                    <div class="partner-logo">LASEM</div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 text-center">
-                                    <div class="partner-logo">SMART</div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 text-center">
-                                    <div class="partner-logo">Centre de Recherche</div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 text-center">
-                                    <div class="partner-logo">REGIM Lab</div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 text-center">
-                                    <div class="partner-logo">University of Sfax</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2>Ready to Join RAISE 2025?</h2>
+            <p>Don't miss this opportunity to master AI-powered robotics for smart agriculture!</p>
+            <a href="https://raiseschool.github.io/RAISE2025/" class="cta-button">Visit Official Website</a>
+            <a href="mailto:raiseschool2025@gmail.com" class="cta-button">Apply for Scholarship</a>
         </div>
     </section>
 
-
-    <!-- Sponsors Section -->
-    <section class="py-5" id="sponsors">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h2 class="section-title mb-4">Our Sponsors</h2>
-
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10">
-                                    <h4 class="text-center mb-4">Platinum Sponsors</h4>
-                                    <div class="row g-4 justify-content-center align-items-center">
-                                        <div class="col-md-6">
-                                            <div class="sponsor-logo text-center p-4">
-                                                <img src="assets/images/sponsors/scalexi/scalexi-logo-transparent-small.png" alt="SCALEXI" class="img-fluid" style="max-height: 100px;">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="sponsor-logo text-center p-4">
-                                                <img src="assets/images/sponsors/must/must.png" alt="MUST" class="img-fluid" style="max-height: 100px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="text-center mt-5">
-                                <h5 class="text-muted mb-3">Interested in becoming a sponsor?</h5>
-                                <a href="#contact" class="btn btn-outline-primary" style="color: var(--secondary-color); border-color: var(--secondary-color);">
-                                    <i class="fas fa-handshake me-2"></i> Contact Us for Sponsorship Opportunities
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-<section class="py-5" id="contact">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <h2 class="section-title mb-4">Contact Us</h2>
-          <div class="row g-4">
-  
-            <!-- General Inquiries -->
-            <div class="col-md-6">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h4 class="card-title mb-4">
-                    <i class="fas fa-envelope-open-text text-primary me-2"></i> General Inquiries
-                  </h4>
-                  <p class="mb-3">For questions regarding registration, accommodations, or general information:</p>
-                  <ul class="list-unstyled contact-list">
-                    <li class="contact-item">
-                      <i class="fas fa-envelope text-primary me-2"></i>
-                      <a href="https://mail.google.com/mail/?view=cm&to=raiseschool2025@gmail.com" target="_blank">
-                        raiseschool2025@gmail.com
-                      </a>
-                    </li>
-                    <li class="contact-item">
-                      <i class="fas fa-phone text-primary me-2"></i>
-                      <a href="tel:+21698290354">+216 98 290 354</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Sponsorship -->
-            <div class="col-md-6">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h4 class="card-title mb-4">
-                    <i class="fas fa-handshake text-success me-2"></i> Sponsorship Opportunities
-                  </h4>
-                  <p class="mb-3">
-                    Interested in supporting the International Summer School RAISE 2025 and gaining visibility for your organization?
-                  </p>
-                  <ul class="list-unstyled mb-4">
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Brand visibility among robotics and AI experts</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Access to talented participants and researchers</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Product demonstration opportunities</li>
-                  </ul>
-                  <a href="https://mail.google.com/mail/?view=cm&to=raiseschool2025@gmail.com" target="_blank" class="btn" style="background-color: var(--secondary-color); color: white;">
-                    <i class="fas fa-envelope me-2"></i> Contact Sponsorship Team
-                  </a>
-                </div>
-              </div>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Footer -->
-<footer class="text-white">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-6 text-center text-md-start">
-          <h4 class="mb-3">RAISE 2025</h4>
-          <p>Robotics and Artificial Intelligence in Systems Engineering</p>
-          <p class="mb-0">July 14-16, 2025 | Centre de recherche Sfax, Tunisia</p>
-        </div>
-        <div class="col-md-6 text-center text-md-end">
-          <h4 class="mb-3">Contact</h4>
-          <p>
-            <i class="fas fa-envelope me-2"></i>
-            <a href="https://mail.google.com/mail/?view=cm&to=raiseschool2025@gmail.com" target="_blank" style="color: white;">
-              raiseschool2025@gmail.com
-            </a>
-          </p>
-          <p class="mb-0"><i class="fas fa-phone me-2"></i> +216 98 290 354</p>
-        </div>
-        <div class="col-12 text-center mt-4">
-          <p class="mb-0">&copy; 2025 RAISE Summer School. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-    
-
- 
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all sections
-            const sections = document.querySelectorAll('section[id]');
-
-            // Get the navbar
-            const navBar = document.querySelector('.bg-light.py-2');
-            const navBarHeight = navBar.offsetHeight;
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            // Make navbar sticky on scroll
-            let navbarOriginalTop = navBar.offsetTop;
-
-            function stickyNavbar() {
-                if (window.scrollY >= navbarOriginalTop) {
-                    document.body.style.paddingTop = navBarHeight + 'px';
-                    navBar.classList.add('fixed-top');
-                } else {
-                    document.body.style.paddingTop = '0';
-                    navBar.classList.remove('fixed-top');
-                }
-            }
-
-            // Highlight active section in navbar
-            function highlightNavigation() {
-                let scrollY = window.scrollY;
-
-                // Iterate through sections to find the one in view
-                sections.forEach(current => {
-                    const sectionTop = current.offsetTop - navBarHeight - 10;
-                    const sectionHeight = current.offsetHeight;
-                    const sectionId = current.getAttribute('id');
-
-                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                        // Remove active class from all links
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                        });
-
-                        // Add active class to current section link
-                        const activeLink = document.querySelector(`.nav-link[href*="#${sectionId}"]`);
-                        if (activeLink) {
-                            activeLink.classList.add('active');
-                        }
-                    }
-                });
-            }
-
-            // Add event listeners
-            window.addEventListener('scroll', stickyNavbar);
-            window.addEventListener('scroll', highlightNavigation);
-
-            // Initial call to set initial state
-            stickyNavbar();
-            highlightNavigation();
-
-            // Smooth scrolling for nav links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-
-                    window.scrollTo({
-                        top: targetSection.offsetTop - navBarHeight,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Chatbot Button Functionality
-            const chatbotButton = document.getElementById('chatbotButton');
-            const chatbotTooltip = document.querySelector('.chatbot-tooltip');
-
-            // Show tooltip on page load after 3 seconds
-            setTimeout(() => {
-                chatbotTooltip.style.opacity = '1';
-                chatbotTooltip.style.transform = 'translateY(0)';
-
-                // Hide tooltip after 5 seconds
-                setTimeout(() => {
-                    chatbotTooltip.style.opacity = '0';
-                    chatbotTooltip.style.transform = 'translateY(20px)';
-                }, 5000);
-            }, 3000);
-
-            // Always use embedded chatbot
-            loadEmbeddedChatbot();
-
-            // Open chatbot when button is clicked
-            chatbotButton.addEventListener('click', function() {
-                // The embedded-widget.js will handle this button click
-            });
-
-            // Function to load the embedded chatbot widget
-            function loadEmbeddedChatbot() {
-                // Check if script is already loaded
-                if (!document.querySelector('script[src="chatbot/embedded-widget.js"]')) {
-                    const script = document.createElement('script');
-                    script.src = 'chatbot/embedded-widget.js';
-                    document.body.appendChild(script);
-                }
-            }
+        // Progress bar functionality
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
         });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const navLinks = document.querySelector('.nav-links');
+        const header = document.querySelector('header');
+        
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 768) {
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '☰';
+            menuButton.style.cssText = 'background: none; border: none; font-size: 1.5rem; cursor: pointer;';
+            
+            menuButton.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            header.querySelector('.header-content').appendChild(menuButton);
+        }
     </script>
 </body>
-
 </html>
