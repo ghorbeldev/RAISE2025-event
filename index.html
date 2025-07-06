@@ -504,17 +504,38 @@
   <style>
     .day-header {
       color: black;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      font-size: 1.3em;
+      margin-bottom: 10px;
     }
+
+    .day-number {
+      background-color: #FFD700; /* Jaune doré */
+      color: black;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 0.9em;
+    }
+
     .time-slot h4 {
-      color: #FFD700; /* Jaune doré */
+      color: #FFD700;
+      font-weight: bold;
     }
   </style>
+
   <h2>Daily Program</h2>
   <div class="day-program">
 
     <section class="day-card" aria-labelledby="day1-title">
-      <h3 id="day1-title" class="day-header"><span class="day-number">Day 1</span> ROS 2 Foundations for Field Robots</h3>
-
+      <h3 id="day1-title" class="day-header"><span class="day-number">1</span> ROS 2 Foundations for Field Robots</h3>
       <div class="time-slot">
         <h4>09:00 – 12:00 | Morning Session</h4>
         <ul>
@@ -543,7 +564,7 @@
     </section>
 
     <section class="day-card" aria-labelledby="day2-title">
-      <h3 id="day2-title" class="day-header"><span class="day-number">Day 2</span> AI &amp; Computer Vision for Plant Diagnostics</h3>
+      <h3 id="day2-title" class="day-header"><span class="day-number">2</span> AI &amp; Computer Vision for Plant Diagnostics</h3>
 
       <div class="time-slot">
         <h4>09:00 – 12:00 | Morning Session</h4>
@@ -571,7 +592,7 @@
     </section>
 
     <section class="day-card" aria-labelledby="day3-title">
-      <h3 id="day3-title" class="day-header"><span class="day-number">Day 3</span> Integrated Challenge &amp; Awards Ceremony</h3>
+      <h3 id="day3-title" class="day-header"><span class="day-number">3</span> Integrated Challenge &amp; Awards Ceremony</h3>
 
       <div class="time-slot">
         <h4>09:00 – 09:30 | Opening Ceremony</h4>
@@ -605,6 +626,7 @@
 
   </div>
 </section>
+
 
 
 
