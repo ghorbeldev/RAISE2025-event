@@ -419,6 +419,140 @@
     .time-slot ul li, .time-slot ol li {
       margin-bottom: 0.4rem;
     }
+
+    /* Event Gallery Slideshow */
+    .event-gallery {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 4rem 0;
+        margin: 2rem 0;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .slideshow-container {
+        position: relative;
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide {
+        display: none;
+        position: relative;
+        animation: slideIn 0.5s ease-in-out;
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .slide-caption h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #ffd700;
+    }
+
+    .slide-caption p {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+
+    /* Navigation arrows */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -30px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        background: rgba(118, 75, 162, 0.7);
+        border: none;
+        border-radius: 0 5px 5px 0;
+        user-select: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .prev:hover, .next:hover {
+        background: rgba(118, 75, 162, 0.9);
+    }
+
+    /* Dots indicators */
+    .dots-container {
+        text-align: center;
+        padding: 20px;
+        background: white;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active, .dot:hover {
+        background-color: #764ba2;
+    }
+
+    /* Slideshow animations */
+    @keyframes slideIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Responsive design for slideshow */
+    @media (max-width: 768px) {
+        .slide img {
+            height: 250px;
+        }
+        
+        .slide-caption {
+            padding: 1rem;
+        }
+        
+        .slide-caption h3 {
+            font-size: 1.2rem;
+        }
+        
+        .prev, .next {
+            padding: 12px;
+            font-size: 16px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -435,6 +569,7 @@
                         <li><a href="#audience">Audience</a></li>
                         <li><a href="#faculty">Organization</a></li>
                         <li><a href="#registration">Registration</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
                     </ul>
                 </nav>
             </div>
@@ -504,6 +639,69 @@
     📘 Workshop Guide
   </a>
 </div>
+
+<!-- Event Gallery Slideshow Section -->
+<section id="gallery" class="event-gallery">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #764ba2;">Event Gallery</h2>
+        <p style="text-align: center; font-size: 1.1rem; color: #555; margin-bottom: 3rem;">Discover highlights from RAISE2025 - International Summer School on Robotics & AI</p>
+        
+        <div class="slideshow-container">
+            <div class="slide active">
+                <img src="assets/images/event/slide1.jpg" alt="Robotics Workshop">
+                <div class="slide-caption">
+                    <h3>Hands-On Robotics Workshop</h3>
+                    <p>Students collaborating on ROS2 programming and autonomous robot development in our state-of-the-art laboratory</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="assets/images/event/slide2.jpg" alt="AI Presentation">
+                <div class="slide-caption">
+                    <h3>AI & Computer Vision Presentation</h3>
+                    <p>Expert-led sessions on YOLO object detection and smart agriculture applications using cutting-edge AI technology</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="assets/images/event/slide3.jpg" alt="Competition Challenge">
+                <div class="slide-caption">
+                    <h3>Robotics Competition Challenge</h3>
+                    <p>Teams working intensively with Jetson Nano robots in agricultural simulation environments</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="assets/images/event/slide4.jpg" alt="ENET'Com Campus">
+                <div class="slide-caption">
+                    <h3>ENET'Com Campus - Sfax, Tunisia</h3>
+                    <p>Our beautiful venue hosting the International Summer School with modern facilities and Mediterranean charm</p>
+                </div>
+            </div>
+            
+            <div class="slide">
+                <img src="assets/images/event/slide5.jpg" alt="Awards Ceremony">
+                <div class="slide-caption">
+                    <h3>Awards Ceremony</h3>
+                    <p>Celebrating achievements and recognizing outstanding performance in the RAISE2025 robotics competition</p>
+                </div>
+            </div>
+            
+            <!-- Navigation arrows -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            
+            <!-- Dots indicators -->
+            <div class="dots-container">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -946,6 +1144,83 @@
             
             header.querySelector('.header-content').appendChild(menuButton);
         }
+
+        // Slideshow functionality
+        let slideIndex = 1;
+        let slideInterval;
+
+        // Initialize slideshow
+        function initSlideshow() {
+            showSlide(slideIndex);
+            startAutoSlide();
+        }
+
+        // Show specific slide
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].classList.add('active');
+            }
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].classList.add('active');
+            }
+        }
+
+        // Change slide (next/previous)
+        function changeSlide(n) {
+            stopAutoSlide();
+            slideIndex += n;
+            showSlide(slideIndex);
+            startAutoSlide();
+        }
+
+        // Go to specific slide
+        function currentSlide(n) {
+            stopAutoSlide();
+            slideIndex = n;
+            showSlide(slideIndex);
+            startAutoSlide();
+        }
+
+        // Auto-advance slides
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        // Start auto-slide
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Stop auto-slide
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+
+        // Pause on hover
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        if (slideshowContainer) {
+            slideshowContainer.addEventListener('mouseenter', stopAutoSlide);
+            slideshowContainer.addEventListener('mouseleave', startAutoSlide);
+        }
+
+        // Initialize slideshow when page loads
+        document.addEventListener('DOMContentLoaded', initSlideshow);
+
+        // Make functions global for onclick handlers
+        window.changeSlide = changeSlide;
+        window.currentSlide = currentSlide;
     </script>
 </body>
 </html>
